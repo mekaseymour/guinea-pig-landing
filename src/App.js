@@ -1,26 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from './guinea.svg';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Link
+} from 'react-router-dom';
+import PrivacyPolicy from './PrivacyPolicy';
 
-function App() {
+const Home = () => {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <p className="App-title">Guinea Pig</p>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          No animals were harmed in the making of this app ❤︎
         </p>
-        <a
+        <Link
           className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+          to="/privacy"
         >
-          Learn React
-        </a>
+          privacy policy
+        </Link>
       </header>
     </div>
   );
+}
+
+const App = () => {
+  return (
+    <Router>
+        <Route path="/" exact component={Home} />
+        <Route path="/privacy/" exact component={PrivacyPolicy} />
+      </Router>
+  )
 }
 
 export default App;
